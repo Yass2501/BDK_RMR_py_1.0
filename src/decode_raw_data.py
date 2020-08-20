@@ -1,5 +1,6 @@
 import os
 import functions
+import datetime
 from global_variables import *
 
 
@@ -26,6 +27,13 @@ class RMR_Message(object):
         self.OBU_CUSTOM = OBU_CUSTOM
         self.OBU_DATA_LEN = OBU_DATA_LEN
         self.OBU_DATA = OBU_DATA
+
+    def date_time_pretty(self):
+        gps_field = self.decode_GPS()
+        TIME = gps_field[GPS_TIME]
+        DATE = gps_field[GPS_DATE]
+        date_time = datetime.datetime(2000+int(DATE[4:6]),int(DATE[2:4]),int(DATE[0:2]),int(TIME[0:2]),int(TIME[2:4]),int(TIME[4:6]))
+        print(date_time.strftime('%d-%m-%Y  %H:%M:%S'))
 
     def decode_GPS(self):
         
