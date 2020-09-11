@@ -8,16 +8,15 @@ import rmr_periodic
 from global_variables import *
 import comet_init
 import numpy as np
-import xlsxwriter
-import excel_functions
+
 
 ################################################## Inputs ##################################################
 
 OBU_Directory = '../inputs/OBU_Proxy'
 filter_obu_data_type  = [2]      # 'all' for all messages, [2,16,14,...] for the messages type you want
-filter_onu_name      = ['NJ LINT41 653 683']
-d0 = datetime.date(2020, 6, 12)
-d1 = datetime.date(2020, 6, 20)
+filter_onu_name      = ['DSB MQ 4123']
+d0 = datetime.date(2020, 7, 31)
+d1 = datetime.date(2020, 8, 7)
 Nprocs = 8
 para = 1
 
@@ -57,8 +56,9 @@ if __name__ == '__main__':
         TRU_NID_MESSAGE = data_hex[0:2]
         if(TRU_NID_MESSAGE == '00'):
             JRU_Mess = evc_tru.extract_jru_message(m)
-            if(int(JRU_Mess.V_TRAIN,2) < 600):
-                print(int(JRU_Mess.V_TRAIN,2))
+            m.date_time_pretty()
+            print(int(JRU_Mess.V_TRAIN,2))
+            print('===================================================================')
     
     
     
