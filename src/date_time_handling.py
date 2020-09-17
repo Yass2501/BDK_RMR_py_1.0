@@ -50,10 +50,10 @@ def generate_periods2(date0, days_per_period, Nperiods):
 
 
     
-
-
-
-
-    
-    
+if __name__ == '__main__':
+    d0 = datetime.date(2019, 8, 2)
+    days_per_period = 7
+    weeks = 53
+    periods = generate_periods2(d0, days_per_period, weeks)
+    print(periods)
 

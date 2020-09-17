@@ -16,12 +16,12 @@ OBU_Directory = '../inputs/OBU_Proxy'
 filter_obu_data_type  = [2,14]      # 'all' for all messages, [2,16,14,...] for the messages type you want
 filter_obu_name      = ['DSB MQ','NJ Desiro','LINT41 AR', 'NJ LINT41','DSB IC3','DSB ABs','LT LINT41']
 #filter_obu_name      = ['LINT41 AR']
-d0 = datetime.date(2019, 8, 1)
-d1 = datetime.date(2020, 8, 1)
+d0 = datetime.date(2019, 8, 2)
+#d1 = datetime.date(2020, 8, 1)
 DEFECTS = [462,463,464,'CHANNEL']
 #DEFECTS = [370,371,372,'PSU']
 days_per_period = 7
-weeks = 52
+weeks = 53
 para = 1
 Nproc = 8
 
@@ -114,7 +114,8 @@ if __name__ == '__main__':
     channel_1_defect  = np.zeros((len(IDs),len(periods)))
     channel_2_defect  = np.zeros((len(IDs),len(periods)))
     channel_3_defect  = np.zeros((len(IDs),len(periods)))
-    no_ala_fan  = np.zeros((len(IDs),len(periods)))
+    channel_3_defect_ov_tot = np.zeros((len(IDs),len(periods)))
+    #no_ala_fan  = np.zeros((len(IDs),len(periods)))
     tot = np.zeros((len(IDs),len(periods)))
     
     for i in range(0,len(IDs)):
@@ -165,9 +166,11 @@ if __name__ == '__main__':
             channel_1_defect[i][j] = sum_0
             channel_2_defect[i][j] = sum_1
             channel_3_defect[i][j] = sum_2
+            if(tot[i][j] == 0):
+                channel_3_defect_ov_tot[i][j] = -1
+            else:
+                channel_3_defect_ov_tot[i][j] = channel_3_defect[i][j]*24/tot[i][j]
             #no_ala_fan[i][j] = sum_fan     
-            #channel_X_defect[i][j] = evc_tru.MM_compute_occurence(RMR_Messages_sorted, [periods[0][0],periods[len(periods)-1][1]], IDs[i], CHANNEL_hex[j])
-            
             
 
 ############################################ Excel ##################################################
@@ -180,11 +183,13 @@ if __name__ == '__main__':
     worksheet_3 = workbook.add_worksheet(DEFECTS[3]+' 3')
     #worksheet_fan = workbook.add_worksheet('FAN MODULE')
     worksheet_tot = workbook.add_worksheet('Train Op Time')
+    worksheet_ch3_tot = workbook.add_worksheet('CHANNEL 3 normalized')
     
     excel_functions.write_tableStats(workbook, worksheet_1, DEFECTS[3]+' 1', Names, periods, [2,1], channel_1_defect, [0,5,10])
     excel_functions.write_tableStats(workbook, worksheet_2, DEFECTS[3]+' 2', Names, periods, [2,1], channel_2_defect, [0,5,10])
     excel_functions.write_tableStats(workbook, worksheet_3, DEFECTS[3]+' 3', Names, periods, [2,1], channel_3_defect, [0,5,10])
     excel_functions.write_tableStats(workbook, worksheet_tot,'Train Op Time', Names, periods, [2,1], tot, [0,90,180])
+    excel_functions.write_tableStats(workbook, worksheet_ch3_tot, 'CHANNEL 3 normalized', Names, periods, [2,1], channel_3_defect_ov_tot, [0,1,2])
     #excel_functions.write_tableStats(workbook, worksheet_fan,'FAN MODULE', Names, periods, [2,1], no_ala_fan, [0,5,10])
     workbook.close()
     
@@ -385,7 +390,7 @@ if __name__ == '__main__':
     
     workbook.close()'''
 
-        
+
             
 
 

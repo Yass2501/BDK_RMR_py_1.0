@@ -1,0 +1,50 @@
+GD_DK_DRU_FULL_2019-08-06_04-38-47Z_COMET_1.hmz
+
+Msg 0
+JRU (
+    NID_MESSAGE(SUBSET) : 1
+    L_MESSAGE : 39
+    DATE.YEAR : 2019
+    DATE.MONTH : 8
+    DATE.DAY : 6
+    TIME.HOUR : 23
+    TIME.MINUTES : 59
+    TIME.SECONDS : 59
+    TIME.MILLISECONDES : 650ms
+    TRAIN_POSITION.Q_SCALE : 2-->10 m scale
+    TRAIN_POSITION.NID_C : 344-->Identity number of the country or region = 344
+    TRAIN_POSITION.NID_BG : 3439-->3439
+    TRAIN_POSITION.D_LRBG : 14987-->Value = 149870,00  m
+    TRAIN_POSITION.Q_DIRLRBG : 0-->Reverse
+    TRAIN_POSITION.Q_DLRBG : 0-->Reverse
+    TRAIN_POSITION.L_DOUBTOVER : 1243-->Over-reading error = 12430,00 m
+    TRAIN_POSITION.L_DOUBTUNDER : 1306-->Under-reading error = 13060,00 m
+    V_TRAIN : 1023-->Standstill
+    DRIVER_ID : Driver identifier  = ????????????????
+    NID_ENGINE : 14401-->14401
+    SYSTEM_VERSION : 32-->Version 2.0, introduced in SRS 3.4.0
+    M_LEVEL : 1-->Level NTC specified by NID_NTC
+    M_MODE : 6-->Stand By
+    GENERAL MESSAGE (
+    )
+)
+
+Msg 1
+DRU ETCS (
+    NID_MESSAGE : 9
+    L_MESSAGE : 55
+    DATE.YEAR : 2019
+    DATE.MONTH : 8
+    DATE.DAY : 6
+    TIME.HOUR : 23
+    TIME.MINUTES : 59
+    TIME.SECONDS : 59
+    TIME.MILLISECONDES : 650ms
+    DRU_NID_PACKET : 1-->M_DIAG codes
+    DRU_L_PACKET : 47
+    TRU_NID_SOURCE : 1-->
+    DRU_M_DIAG : 4043-->4043
+    DRU_NID_CHANNEL : 0-->N/A
+    TRU_L_TEXT : 40-->40
+    TRU_X_TEXT : OK     No CSD call  REGok  PDPok 23823  -->"OK     No CSD call  REGok  PDPok 23823  "
+)
