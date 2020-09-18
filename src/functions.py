@@ -144,4 +144,17 @@ def getNameFromID(ID, id_name_map):
             break
     return TrainName
 
+def meanColMatrix(M,iLine):
+    sum = 0
+    cnt = 0
+    for j in range(0,M.shape[1]):
+        if(M[iLine][j] == -1):
+            continue
+        else:
+            sum = sum + M[iLine][j]
+            cnt = cnt + 1
+    if(cnt == 0):
+        return 0
+    else:
+        return sum / cnt
 

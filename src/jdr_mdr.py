@@ -4,22 +4,21 @@ import datetime
 
 f = open('../inputs/JDR_MDR/test.txt','r+')
 data = f.readlines()
+data = data + ['','','']
 f.close()
 
+JDR_MDR_Messages = []
 k = 0
-count = 0
-l_mess = len(data)
-print(l_mess)
-while(k < l_mess):
+len_data = len(data)
+while(k < len_data):
     if(data[k].find('Msg') == 0):
-        index = k
-        if(data[index+1].find('JRU') == 0):
-            stri = data[index+2].split(' ')
-            k = k + 27
+        k = k + 1
+        if(data[k].find('DRU') == 0):
+            #k = k + 1
+            while(data[k] != ')\n' or data[k] != ')'):
+                print(data[k])
+                k = k + 1
     else:
         k = k + 1
-        
-            
-        
 
 

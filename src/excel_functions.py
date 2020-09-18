@@ -39,9 +39,12 @@ def write_tableStats(workbook, worksheet, Title, obu_names, periods, start, data
     })
     
     write_periods_trainNames(workbook, worksheet, periods, obu_names, start)
+    
     worksheet.set_column(start[1]-1,start[1]-1,20)
-    worksheet.merge_range(start[0]-2,start[1]-1,start[0]-1,start[1]-1,\
-                              Title, merge_format)
+    worksheet.merge_range(start[0]-2,start[1]-1,start[0]-1,start[1]-1, Title, merge_format)
+    worksheet.set_column(start[1]-1,start[1]+len(periods)+1,15)
+    worksheet.merge_range(start[0]-2,start[1]+len(periods)+1,start[0]-1,start[1]+len(periods)+1, 'Mean over periods', merge_format)
+    
     i = 0
     for i in range(0,len(obu_names)):
         j = 0
@@ -52,7 +55,7 @@ def write_tableStats(workbook, worksheet, Title, obu_names, periods, start, data
                 worksheet.write(start[0]+i,start[1]+j,data[i][j])
             j = j + 1
         i = i + 1
-    worksheet.conditional_format(start[0],start[1],i+start[0],j+start[1],\
+    worksheet.conditional_format(start[0],start[1],i+start[0],j+start[1]+3,\
                                      {'type': '3_color_scale','min_color': '#63BE7B',\
                                       'mid_color': '#FFEB84','max_color': '#F8696B','min_value': range_color[0],\
                                       'mid_value': range_color[1],'max_value': range_color[2],'min_type': 'num','mid_type': 'num',\
