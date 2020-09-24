@@ -2,6 +2,7 @@ import decode_raw_data
 import functions
 import numpy as np
 from global_variables import *
+from functions import *
 
 
 
@@ -190,7 +191,7 @@ def compute_TRAIN_OP_TIME_para(RMR_Messages, periods, OBU_IDs, comet_init_coeff)
                 i = i + 1
         return train_op_time
                 
-'''                        
+                        
 def check_reset_COMET(TrainID, TrainName, RMR_Messages, ODO_or_GPS, print_successive):
         COMET_TRAIN_OP_TIME_prev = 0
         COMET_KM_ODO_prev   = np.inf
@@ -287,4 +288,4 @@ def check_KM_ODO_or_KM_GPS(TrainID, TrainName, RMR_Messages, KM_TARGET, ODO_or_G
             print('KM_'+ODO_or_GPS+' of train '+TrainName+': '+' with value ['+str(COMET_KM)+']')
             print('===============================================================================')
         else:
-            print('The value of '+str(KM_TARGET)+' km has not been find in this period')'''
+            print('The value of '+str(KM_TARGET)+' km has not been find in this period')

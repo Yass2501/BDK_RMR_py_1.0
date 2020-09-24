@@ -20,11 +20,11 @@ filter_obu_data_type  = [2,14]      # 'all' for all messages, [2,16,14,...] for 
 g = open('../inputs/JDR_MDR/List_Train.csv','r+')
 filter_obu_name = g.readlines()
 g.close()
-d0 = datetime.date(2019, 8, 2)
+d0 = datetime.date(2019, 8, 1)
 DEFECTS = [462,463,464,'CHANNEL']
 #DEFECTS = [370,371,372,'PSU']
 days_per_period = 7
-weeks = 53
+weeks = 59
 para = 1
 Nproc = 8
 
